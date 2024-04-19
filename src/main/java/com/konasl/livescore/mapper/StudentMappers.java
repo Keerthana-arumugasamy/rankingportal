@@ -2,6 +2,7 @@ package com.konasl.livescore.mapper;
 
 import com.konasl.livescore.configuration.mapper.Mapper;
 import com.konasl.livescore.configuration.mapper.MapperRegistry;
+import com.konasl.livescore.dto.StudentRequest;
 import com.konasl.livescore.dto.StudentResponse;
 import com.konasl.livescore.dto.UserRequest;
 import com.konasl.livescore.dto.UserResponse;
@@ -21,6 +22,7 @@ public class StudentMappers {
     @PostConstruct
     private void registerMappers() {
         mapperRegistry.addMapper(Student.class, StudentResponse.class, studentToStudentResponseMapper());
+        mapperRegistry.addMapper(StudentRequest.class, Student.class, studentRequestToStudentMapper());
     }
 
     private Mapper<Student, StudentResponse> studentToStudentResponseMapper() {
@@ -35,4 +37,17 @@ public class StudentMappers {
                 .rollno(student.getRollno())
                 .build();
     }
+
+    private Mapper<StudentRequest,Student> studentRequestToStudentMapper(){
+        return studentRequest -> Student.builder()
+                .department(studentRequest.getDepartment())
+                .marks(studentRequest.getMarks())
+                .name(studentRequest.getName())
+                .stack(studentRequest.getStack())
+                .project(studentRequest.getProject())
+                .email(studentRequest.getEmail())
+                .rollno(studentRequest.getRollno())
+                .build();
+    }
+
 }
