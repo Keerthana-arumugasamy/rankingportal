@@ -1,12 +1,13 @@
 package com.konasl.livescore.controller;
 
+import com.konasl.livescore.entity.Student;
 import com.konasl.livescore.service.DineshService;
-import com.konasl.livescore.service.KeerthanaService;
-import com.konasl.livescore.service.impl.DineshServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/dinesh")
@@ -21,7 +22,7 @@ public class DineshScoreController {
     }
 
     @GetMapping(value = "/heartbeat/service")
-    public String findDineshHeartBeatService() {
+    public List<Student> findDineshHeartBeatService() {
         return dineshService.getHeartBeatFromService();
     }
 }

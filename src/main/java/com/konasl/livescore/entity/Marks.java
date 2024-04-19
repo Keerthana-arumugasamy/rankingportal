@@ -5,7 +5,6 @@ import lombok.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Data
 @Builder
@@ -16,7 +15,7 @@ import javax.persistence.UniqueConstraint;
 @Table(
         name = "marks"
 )
-public class marks extends BaseEntity {
+public class Marks extends BaseEntity {
 
     @Column(nullable = false)
     private float total;

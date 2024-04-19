@@ -1,5 +1,9 @@
 package com.konasl.livescore.service;
 
+import com.konasl.livescore.entity.Student;
+
+import java.util.List;
+
 public interface DineshService {
-    String getHeartBeatFromService();
+    List<Student> getHeartBeatFromService();
 }
