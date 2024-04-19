@@ -50,8 +50,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponse registration(UserRequest authRequest) {
-        return mapperRegistry.getMapper(User.class, UserResponse.class).map(
-                userRepository.save(mapperRegistry.getMapper(UserRequest.class, User.class).map(authRequest))
+        return mapperRegistry.getMapper(User.class, UserResponse.class)
+                .map(userRepository.save(mapperRegistry.getMapper(UserRequest.class, User.class).map(authRequest))
         );
     }
 }
