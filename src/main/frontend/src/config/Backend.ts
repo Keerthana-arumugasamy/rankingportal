@@ -18,5 +18,10 @@ const Backend = {
         pageNumber: data.pageNumber - 1,
       }),
   },
+
+  StudentRank :{
+      list: () =>
+          axios.get(process.env.REACT_APP_STUDENT_ALL_API_PATH_GET!),
+  }
 };
 export default Backend;

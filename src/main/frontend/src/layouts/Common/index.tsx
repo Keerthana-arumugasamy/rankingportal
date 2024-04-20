@@ -63,6 +63,13 @@ const CommonLayout = ({ route }: { route: AppRouteDTO }) => {
       >
         <Link to="/blank-page">Blank Page</Link>
       </Menu.Item>
+      <Menu.Item
+          icon={<FileOutlined />}
+          key={"/student-rank"}
+          onClick={closeMenu}
+      >
+        <Link to="/student-rank">Student Rank</Link>
+      </Menu.Item>
     </Menu>
   );
 
