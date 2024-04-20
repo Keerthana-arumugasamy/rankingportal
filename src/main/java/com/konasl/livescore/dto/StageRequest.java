@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Data
-public class StageResponse {
+public class StageRequest {
     private Long stage;
     private String status;
     private Long studentId;

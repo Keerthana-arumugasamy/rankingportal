@@ -7,6 +7,7 @@ import Page from "../../components/Page";
 import Notify from "../../components/Notify";
 import StudentDTO from "../../dtos/StudentDTO";
 import LevelResponseDTO from "../../dtos/LevelResponseDTO";
+import StageResponseDTO from "../../dtos/StageResponseDTO";
 
 const StudentRankList = () => {
     const { state, dispatch, getStudentRank, updateStudentRank,getStudentDetails } = useStudentRankContext();
@@ -55,6 +56,20 @@ const StudentRankList = () => {
         {
             title: "Status",
             dataIndex: "status",
+        },
+    ];
+    const stageColumns: ColumnsType<StageResponseDTO> = [
+        {
+            title: "Stage",
+            dataIndex: "stage",
+        },
+        {
+            title: "Status",
+            dataIndex: "status",
+        },
+        {
+            title: "Week",
+            dataIndex: "week",
         },
     ];
 
@@ -189,6 +204,19 @@ const StudentRankList = () => {
                         columns={levelColumns}
                         loading={state.loading}
                         rowKey={(record: LevelResponseDTO) => record.id!}
+                    />
+                </Space>
+            </Page>
+            <Page title="Student Stage">
+                <PageHeader title="Student Stage" />
+                <Space direction="vertical" size={16} style={{ width: "100%" }}>
+                    <Table
+                        size="middle"
+                        scroll={{ x: "100vh" }}
+                        dataSource={state.studentDetails?.stageList}
+                        columns={stageColumns}
+                        loading={state.loading}
+                        rowKey={(record: StageResponseDTO) => record.id!}
                     />
                 </Space>
             </Page>

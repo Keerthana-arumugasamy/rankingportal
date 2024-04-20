@@ -2,9 +2,8 @@ package com.konasl.livescore.mapper;
 
 import com.konasl.livescore.configuration.mapper.Mapper;
 import com.konasl.livescore.configuration.mapper.MapperRegistry;
-import com.konasl.livescore.dto.StackRequest;
-import com.konasl.livescore.dto.StackResponse;
-import com.konasl.livescore.dto.StageResponse;
+import com.konasl.livescore.dto.*;
+import com.konasl.livescore.entity.Level;
 import com.konasl.livescore.entity.Stack;
 import com.konasl.livescore.entity.Stage;
 import lombok.RequiredArgsConstructor;
@@ -20,8 +19,7 @@ public class StageMappers {
     @PostConstruct
     private void registerMappers() {
         mapperRegistry.addMapper(Stage.class, StageResponse.class, stageToStageResponseMapper());
-    }
-
+         }
 
     private Mapper<Stage, StageResponse> stageToStageResponseMapper() {
         return stage -> StageResponse.builder()
