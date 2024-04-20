@@ -25,9 +25,10 @@ public class Level extends BaseEntity {
     private String course;
 
     @Column(nullable = false)
-    private String timestamp;
+    private String status;
 
     @Column(nullable = false)
-    private String status;
+    private Long student_id;
+
 
 }

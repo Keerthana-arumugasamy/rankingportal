@@ -14,4 +14,5 @@ public class LevelRequest {
     private String timestamp;
     private String status;
     private Long level;
+    private Long studentId;
 }

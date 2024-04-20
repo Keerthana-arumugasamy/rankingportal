@@ -26,5 +26,6 @@ public class Stage extends BaseEntity {
     @Column(nullable = false)
     private String status;
 
+    @Column(nullable = false)
     private Long student_id;
 }

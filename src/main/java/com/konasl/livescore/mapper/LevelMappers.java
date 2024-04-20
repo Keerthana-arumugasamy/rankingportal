@@ -29,7 +29,7 @@ public class LevelMappers {
                 .level(LevelRequest.getLevel())
                 .course(LevelRequest.getCourse())
                 .status(LevelRequest.getStatus())
-                .timestamp(LevelRequest.getTimestamp())
+                .student_id(LevelRequest.getStudentId())
                 .build();
     }
 
@@ -38,7 +38,7 @@ public class LevelMappers {
                 .level(Level.getLevel())
                 .course(Level.getCourse())
                 .status(Level.getStatus())
-                .timestamp(Level.getTimestamp())
+                .studentId(Level.getStudent_id())
                 .build();
     }
 

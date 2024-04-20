@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class LevelResponse {
     private String course;
-    private String timestamp;
     private String status;
     private Long level;
+    private Long studentId;
 }
