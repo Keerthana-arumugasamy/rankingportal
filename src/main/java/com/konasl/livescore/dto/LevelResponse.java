@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 public class LevelResponse {
+    private Long id;
     private String course;
     private String status;
     private Long level;

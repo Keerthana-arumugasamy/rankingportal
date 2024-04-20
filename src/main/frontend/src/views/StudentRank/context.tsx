@@ -9,12 +9,14 @@ const StudentRankContext = createContext<{
     dispatch: React.Dispatch<StudentRankAction>;
     getStudentRank :() => Promise<void>;
     updateStudentRank:(data:StudentDTO) => Promise<void>;
+    getStudentDetails:(data:StudentDTO) => Promise<void>;
 }>(
     {
     state: initialStudentRankState,
     dispatch: () => null,
         getStudentRank: () => Promise.resolve(),
         updateStudentRank: () => Promise.resolve(),
+        getStudentDetails:() => Promise.resolve(),
     }
 );
 
@@ -53,6 +55,19 @@ export const StudentRankProvider = (
         })
     };
 
+    const getStudentDetails = (data: StudentDTO) => {
+        return new Promise<void>((resolve,reject)=>{
+            dispatch({ type: "SET_LOADING", payload: true });
+            Backend.StudentRank.getDetails(data)
+                .then((response: AxiosResponse) => {
+                    dispatch({ type: "SET_STUDENT_DETAILS", payload: response.data });
+                    resolve();
+                })
+                .catch((error: AxiosError) => reject(error))
+                .finally(() => dispatch({ type: "SET_LOADING", payload: false }));
+        })
+    };
+
     return (
         <StudentRankContext.Provider
             value={{
@@ -60,6 +75,7 @@ export const StudentRankProvider = (
                 dispatch,
                 getStudentRank,
                 updateStudentRank,
+                getStudentDetails,
             }}
         >
             {children}

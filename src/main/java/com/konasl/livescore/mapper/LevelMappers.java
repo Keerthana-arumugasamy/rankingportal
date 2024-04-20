@@ -35,6 +35,7 @@ public class LevelMappers {
 
     private Mapper<Level, LevelResponse> leveltoLevelResponseMapper() {
         return Level -> LevelResponse.builder()
+                .id(Level.getId())
                 .level(Level.getLevel())
                 .course(Level.getCourse())
                 .status(Level.getStatus())

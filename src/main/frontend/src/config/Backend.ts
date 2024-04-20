@@ -26,6 +26,8 @@ const Backend = {
           axios.get(process.env.REACT_APP_STUDENT_ALL_API_PATH_GET!),
       update: (data:StudentDTO) =>
           axios.put(process.env.REACT_APP_STUDENT_UPDATE_API_PATH_PUT!,data),
+      getDetails:(data:StudentDTO)=>
+          axios.post(process.env.REACT_APP_STUDENT_DETAILS_API_PATH_POST!,data),
   },
 
   FacultyList :{

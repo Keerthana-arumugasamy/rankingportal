@@ -6,9 +6,10 @@ import { StudentRankProvider, useStudentRankContext } from "./context";
 import Page from "../../components/Page";
 import Notify from "../../components/Notify";
 import StudentDTO from "../../dtos/StudentDTO";
+import LevelResponseDTO from "../../dtos/LevelResponseDTO";
 
 const StudentRankList = () => {
-    const { state, dispatch, getStudentRank, updateStudentRank } = useStudentRankContext();
+    const { state, dispatch, getStudentRank, updateStudentRank,getStudentDetails } = useStudentRankContext();
     const [selectedStudent, setSelectedStudent] = useState<StudentDTO>();
     const [form] = Form.useForm();
 
@@ -42,6 +43,21 @@ const StudentRankList = () => {
             dataIndex: "project",
         },
     ];
+    const levelColumns: ColumnsType<LevelResponseDTO> = [
+        {
+            title: "Course",
+            dataIndex: "course",
+        },
+        {
+            title: "Level",
+            dataIndex: "level",
+        },
+        {
+            title: "Status",
+            dataIndex: "status",
+        },
+    ];
+
 
     React.useEffect(() => {
         fetchData();
@@ -67,9 +83,13 @@ const StudentRankList = () => {
     const onTableRowClick = (record: StudentDTO) => {
         setSelectedStudent(record);
         form.resetFields();
+        getStudentDetails(record).catch((error: AxiosError) => {
+            Notify({ type: "error", message: error.response?.data.message });
+        });
     };
 
     return (
+        <>
         <Page title="Student Rank">
             <PageHeader title="Student Rank" />
             <Space direction="vertical" size={16} style={{ width: "100%" }}>
@@ -159,6 +179,20 @@ const StudentRankList = () => {
                 </Layout.Content>
             </Layout>
         </Page>
+            <Page title="Student Level">
+                <PageHeader title="Student Level" />
+                <Space direction="vertical" size={16} style={{ width: "100%" }}>
+                    <Table
+                        size="middle"
+                        scroll={{ x: "100vh" }}
+                        dataSource={state.studentDetails?.levelList}
+                        columns={levelColumns}
+                        loading={state.loading}
+                        rowKey={(record: LevelResponseDTO) => record.id!}
+                    />
+                </Space>
+            </Page>
+        </>
     );
 };
 
