@@ -1,9 +1,7 @@
 package com.konasl.livescore.controller;
 
 import com.konasl.livescore.dto.FacultyRequest;
-import com.konasl.livescore.dto.StudentRequest;
 import com.konasl.livescore.entity.Faculty;
-import com.konasl.livescore.entity.Student;
 import com.konasl.livescore.service.FacultyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -32,5 +30,10 @@ public class FacultyController {
     @PostMapping(value = "/save", produces = APPLICATION_JSON_VALUE)
     public Faculty saveFaculty(@RequestBody FacultyRequest facultyRequest) {
         return facultyService.saveFaculty(facultyRequest);
+    }
+
+    @PutMapping(value = "/update", produces = APPLICATION_JSON_VALUE)
+    public Faculty updatedFaculty(@RequestBody FacultyRequest facultyRequest) {
+        return facultyService.updateFaculty(facultyRequest, facultyRequest.getId());
     }
 }

@@ -87,7 +87,7 @@ const StudentRankList = () => {
             </Space>
             <Layout style={{ minHeight: "100vh" }}>
                 <Layout.Content>
-                    <Page title="Login">
+                    <Page title="Student Update Form">
                         <Row align="middle" style={{ minHeight: "100vh" }}>
                             <Col
                                 xs={{ span: 24 }}

@@ -1,21 +1,21 @@
 import Backend from "../../config/Backend";
 import { AxiosError, AxiosResponse } from "axios";
 import React, {createContext, useReducer} from "react";
-import {
-    FacultyListAction, facultyListReducer,
-    FacultyListState,
-    initialFacultyListState,
-} from "./reducer";
+import { FacultyListAction, facultyListReducer, FacultyListState, initialFacultyListState,} from "./reducer";
+import StudentDTO from "../../dtos/StudentDTO";
+import FacultyDTO from "../../dtos/FacultyDTO";
 
 const FacultyListContext = createContext<{
     state: FacultyListState;
     dispatch: React.Dispatch<FacultyListAction>;
     getFacultyList :() => Promise<void>;
+    updateFacultyList:(data:FacultyDTO) => Promise<void>;
 }>(
     {
     state: initialFacultyListState,
     dispatch: () => null,
         getFacultyList: () => Promise.resolve(),
+        updateFacultyList: () => Promise.resolve(),
     }
 );
 
@@ -42,12 +42,25 @@ export const FacultyListProvider = (
         });
     };
 
+    const updateFacultyList = (data: FacultyDTO) => {
+        return new Promise<void>((resolve,reject)=>{
+            dispatch({ type: "SET_LOADING", payload: true });
+            Backend.FacultyList.update(data)
+                .then((response: AxiosResponse) => {
+                    resolve();
+                })
+                .catch((error: AxiosError) => reject(error))
+                .finally(() => dispatch({ type: "SET_LOADING", payload: false }));
+        })
+    };
+
     return (
         <FacultyListContext.Provider
             value={{
                 state,
                 dispatch,
                 getFacultyList,
+                updateFacultyList,
             }}
         >
             {children}
