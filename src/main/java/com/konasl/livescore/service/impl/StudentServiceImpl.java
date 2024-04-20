@@ -26,4 +26,14 @@ public class StudentServiceImpl implements StudentService {
     public Student saveStudent(StudentRequest studentRequest) {
        return studentRepository.save(mapperRegistry.getMapper(StudentRequest.class,Student.class).map(studentRequest));
     }
+
+    @Override
+    public Student updateStudent(StudentRequest studentRequest, Long studentId) {
+        Student student = studentRepository.findById(studentId).orElse(null);
+        if(student == null) return null;
+        student.setMarks(studentRequest.getMarks());
+        student.setProject(studentRequest.getProject());
+        student.setStack(studentRequest.getStack());
+        return studentRepository.save(student);
+    }
 }

@@ -35,6 +35,11 @@ public class StudentController {
     public Student saveStudent(@RequestBody StudentRequest studentRequest) {
         return studentService.saveStudent(studentRequest);
     }
+
+    @PutMapping(value = "/update/{id}", produces = APPLICATION_JSON_VALUE)
+    public Student updatedStudent(@RequestBody StudentRequest studentRequest, @PathVariable Long id) {
+        return studentService.updateStudent(studentRequest,id);
+    }
 }
 
 

@@ -8,4 +8,5 @@ import java.util.List;
 public interface StudentService {
     List<Student> getAllStudents();
     Student saveStudent(StudentRequest studentRequest);
+    Student updateStudent(StudentRequest studentRequest, Long studentId);
 }
