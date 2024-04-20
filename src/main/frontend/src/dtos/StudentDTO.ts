@@ -1,5 +1,5 @@
 export default interface StudentDTO {
-  id?: number;
+  id: number;
   name: string;
   email: string;
   department: string;

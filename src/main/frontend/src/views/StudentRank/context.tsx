@@ -29,7 +29,7 @@ export const StudentRankProvider = (
             dispatch({ type: "SET_LOADING", payload: true });
             Backend.StudentRank.list()
                 .then((response: AxiosResponse) => {
-                    dispatch({ type: "SET_STUDENT_RANK", payload: response.data.content });
+                    dispatch({ type: "SET_STUDENT_RANK", payload: response.data });
                     resolve();
                 })
                 .catch((error: AxiosError) => reject(error))
