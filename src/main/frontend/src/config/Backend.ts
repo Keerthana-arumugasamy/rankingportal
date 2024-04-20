@@ -22,6 +22,11 @@ const Backend = {
   StudentRank :{
       list: () =>
           axios.get(process.env.REACT_APP_STUDENT_ALL_API_PATH_GET!),
+  },
+
+  FacultyList :{
+      list: () =>
+          axios.get(process.env.REACT_APP_FACULTY_ALL_API_PATH_GET!),
   }
 };
 export default Backend;

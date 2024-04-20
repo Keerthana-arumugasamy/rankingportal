@@ -70,6 +70,13 @@ const CommonLayout = ({ route }: { route: AppRouteDTO }) => {
       >
         <Link to="/student-rank">Student Rank</Link>
       </Menu.Item>
+      <Menu.Item
+          icon={<FileOutlined />}
+          key={"/faculty-list"}
+          onClick={closeMenu}
+      >
+        <Link to="/faculty-list">Faculty List</Link>
+      </Menu.Item>
     </Menu>
   );
 

@@ -67,6 +67,11 @@ export const routes: AppRouteDTO[] = [
         component: lazy(() => import("../views/StudentRank")),
       },
       {
+        path: "/faculty-list",
+        exact: true,
+        component: lazy(() => import("../views/FacultyList")),
+      },
+      {
         component: () => <Redirect to="/error/404" />,
       },
     ],
