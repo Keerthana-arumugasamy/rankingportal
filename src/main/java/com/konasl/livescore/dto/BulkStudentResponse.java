@@ -14,6 +14,6 @@ import java.util.List;
 @Data
 public class BulkStudentResponse {
     private StudentResponse studentResponse;
-    private List<LevelResponse> levelResponseArrayList;
-    private List<StageResponse> stageResponseArrayList;
+    private List<LevelResponse> levelList;
+    private List<StageResponse> stageList;
 }
