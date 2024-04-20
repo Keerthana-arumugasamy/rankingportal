@@ -1,5 +1,6 @@
 package com.konasl.livescore.controller;
 
+import com.konasl.livescore.dto.BulkStudentResponse;
 import com.konasl.livescore.dto.LiveScoreRequest;
 import com.konasl.livescore.dto.LiveScoreResponse;
 import com.konasl.livescore.dto.StudentRequest;
@@ -39,6 +40,11 @@ public class StudentController {
     @PutMapping(value = "/update", produces = APPLICATION_JSON_VALUE)
     public Student updatedStudent(@RequestBody StudentRequest studentRequest) {
         return studentService.updateStudent(studentRequest, studentRequest.getId());
+    }
+
+    @PostMapping(value = "/details")
+    public BulkStudentResponse getBulkStudentDetails(@RequestBody StudentRequest studentRequest) {
+        return studentService.getStudentDetails(studentRequest);
     }
 }
 

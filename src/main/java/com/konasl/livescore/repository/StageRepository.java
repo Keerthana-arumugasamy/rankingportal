@@ -10,4 +10,5 @@ import java.util.List;
 public interface StageRepository extends JpaRepository<Stage, Long> {
     @Override
     List<Stage> findAll();
+    List<Stage> findAllByStudent_id(Long id);
 }

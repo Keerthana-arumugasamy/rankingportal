@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,5 +14,6 @@ import java.util.ArrayList;
 @Data
 public class BulkStudentResponse {
     private StudentResponse studentResponse;
-    private ArrayList<LevelResponse> levelResponseList;
+    private List<LevelResponse> levelResponseArrayList;
+    private List<StageResponse> stageResponseArrayList;
 }
