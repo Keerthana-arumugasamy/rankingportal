@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 public class StudentRequest {
+    private Long id;
     private String email;
     private String name;
     private String department;

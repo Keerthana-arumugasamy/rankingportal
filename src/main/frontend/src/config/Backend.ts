@@ -2,6 +2,7 @@ import axios from "axios";
 import LoginDTO from "../dtos/LoginDTO";
 import UserDTO from "../dtos/UserDTO";
 import LiveScoreRequestDTO from "../dtos/LiveScoreRequestDTO";
+import StudentDTO from "../dtos/StudentDTO";
 
 const Backend = {
   Auth: {
@@ -22,6 +23,8 @@ const Backend = {
   StudentRank :{
       list: () =>
           axios.get(process.env.REACT_APP_STUDENT_ALL_API_PATH_GET!),
+      update: (data:StudentDTO) =>
+          axios.put(process.env.REACT_APP_STUDENT_UPDATE_API_PATH_PUT!,data),
   },
 
   FacultyList :{

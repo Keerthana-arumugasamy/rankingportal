@@ -2,15 +2,18 @@ import Backend from "../../config/Backend";
 import { AxiosError, AxiosResponse } from "axios";
 import React, {createContext, useReducer} from "react";
 import {initialStudentRankState, StudentRankAction, studentRankReducer, StudentRankState} from "./reducer";
+import StudentDTO from "../../dtos/StudentDTO";
 const StudentRankContext = createContext<{
     state:StudentRankState;
     dispatch: React.Dispatch<StudentRankAction>;
     getStudentRank :() => Promise<void>;
+    updateStudentRank:(data:StudentDTO) => Promise<void>;
 }>(
     {
     state: initialStudentRankState,
     dispatch: () => null,
         getStudentRank: () => Promise.resolve(),
+        updateStudentRank: () => Promise.resolve(),
     }
 );
 
@@ -37,12 +40,25 @@ export const StudentRankProvider = (
         });
     };
 
+    const updateStudentRank = (data: StudentDTO) => {
+        return new Promise<void>((resolve,reject)=>{
+            dispatch({ type: "SET_LOADING", payload: true });
+            Backend.StudentRank.update(data)
+                .then((response: AxiosResponse) => {
+                resolve();
+                })
+                .catch((error: AxiosError) => reject(error))
+                .finally(() => dispatch({ type: "SET_LOADING", payload: false }));
+        })
+    };
+
     return (
         <StudentRankContext.Provider
             value={{
                 state,
                 dispatch,
                 getStudentRank,
+                updateStudentRank,
             }}
         >
             {children}
