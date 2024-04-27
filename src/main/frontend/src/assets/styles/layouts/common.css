@@ -178,7 +178,7 @@ thead[class*='ant-table-thead'] th:nth-child(1), tbody[class*='ant-table-tbody']
   margin-bottom: 0 !important;
 }
 
- .filterForm .ant-form-item {
+.filterForm .ant-form-item {
   margin-bottom: 0 !important;
 }
 

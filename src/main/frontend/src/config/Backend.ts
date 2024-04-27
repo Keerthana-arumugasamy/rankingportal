@@ -4,6 +4,7 @@ import UserDTO from "../dtos/UserDTO";
 import LiveScoreRequestDTO from "../dtos/LiveScoreRequestDTO";
 import StudentDTO from "../dtos/StudentDTO";
 import FacultyDTO from "../dtos/FacultyDTO";
+import AdminDTO from "../views/Admin";
 
 const Backend = {
   Auth: {
@@ -35,6 +36,11 @@ const Backend = {
           axios.get(process.env.REACT_APP_FACULTY_ALL_API_PATH_GET!),
       update: (data:FacultyDTO) =>
           axios.put(process.env.REACT_APP_FACULTY_UPDATE_API_PATH_PUT!,data),
-  }
+  },
+
+    AdminList :{
+        list: () =>
+            axios.get(process.env.REACT_APP_ADMIN_ALL_API_PATH_GET!),
+    }
 };
 export default Backend;

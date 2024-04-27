@@ -1,22 +1,7 @@
 import React, { Suspense } from "react";
 import { Link, useLocation } from "react-router-dom";
-import {
-  Avatar,
-  BackTop,
-  Button,
-  Drawer,
-  Dropdown,
-  Layout,
-  Menu,
-  Spin,
-} from "antd";
-import {
-  UserOutlined,
-  LogoutOutlined,
-  MenuUnfoldOutlined,
-  GlobalOutlined,
-  FileOutlined,
-} from "@ant-design/icons";
+import { Avatar, BackTop, Button, Drawer, Dropdown, Layout, Menu, Spin,} from "antd";
+import { UserOutlined, LogoutOutlined, MenuUnfoldOutlined, GlobalOutlined, FileOutlined,} from "@ant-design/icons";
 import RenderRoutes from "../../components/RenderRoutes";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { isMobile } from "react-device-detect";
@@ -63,6 +48,7 @@ const CommonLayout = ({ route }: { route: AppRouteDTO }) => {
       >
         <Link to="/blank-page">Blank Page</Link>
       </Menu.Item>
+
       <Menu.Item
           icon={<FileOutlined />}
           key={"/student-rank"}
@@ -70,12 +56,21 @@ const CommonLayout = ({ route }: { route: AppRouteDTO }) => {
       >
         <Link to="/student-rank">Student Rank</Link>
       </Menu.Item>
+
       <Menu.Item
           icon={<FileOutlined />}
           key={"/faculty-list"}
           onClick={closeMenu}
       >
         <Link to="/faculty-list">Faculty List</Link>
+      </Menu.Item>
+
+      <Menu.Item
+          icon={<FileOutlined />}
+          key={"/admin"}
+          onClick={closeMenu}
+      >
+        <Link to="/admin">Admin</Link>
       </Menu.Item>
     </Menu>
   );

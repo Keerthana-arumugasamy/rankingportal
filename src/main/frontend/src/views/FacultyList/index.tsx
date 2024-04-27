@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Button, Card, Col, Form, Input, Layout, PageHeader, Row, Space, Table} from "antd";
-import {ColumnsType, TablePaginationConfig} from "antd/lib/table/interface";
+import {ColumnsType} from "antd/lib/table/interface";
 import { AxiosError } from "axios";
 import {FacultyListProvider, useFacultyListContext} from "./context";
 import Page from "../../components/Page";

@@ -1,4 +1,4 @@
-# Live Score - Spring Boot + React
++# Live Score - Spring Boot + React
 
 ## Technology Stack
 
